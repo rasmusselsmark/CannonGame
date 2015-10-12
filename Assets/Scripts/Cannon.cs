@@ -6,14 +6,11 @@ public class Cannon : MonoBehaviour
 	public Transform GunBarrel;
 	public GameObject CannonBallPrefab;
 	public GameObject ExplosionPrefab;
-	public UnityEngine.UI.Slider PowerBarPrefab;
+	public UnityEngine.UI.Slider CannonBallPowerBar;
 
 	public KeyCode KeyUp;
 	public KeyCode KeyDown;
 	public KeyCode KeyFire;
-
-	// public void IsMyTurn
-	private float firePower;
 
 	void Start ()
 	{
@@ -34,17 +31,16 @@ public class Cannon : MonoBehaviour
 		if (Input.GetKeyDown (KeyFire))
 		{
 			// fire cannon when space has been released
-			firePower = 0f;
+			CannonBallPowerBar.value = 0f;
 		}
 
 		if (Input.GetKey (KeyFire))
 		{
-			firePower += 0.1f;
-			Debug.Log (firePower);
+			CannonBallPowerBar.value += 0.1f;
 		}
 		else if (Input.GetKeyUp (KeyFire))
 		{
-			FireCannon (firePower);
+			FireCannon (CannonBallPowerBar.value);
 		}
 	}
 
